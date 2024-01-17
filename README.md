@@ -17,7 +17,7 @@ bar -o -x archive.bar      # Override existing files
 
 ## Format
 ```
-All data is written in litte-endian format.
+All data is written in litte-endian byte order.
 
 BAR file structure:
 [Header]
@@ -30,11 +30,12 @@ Header:
   version  1 byte
 
 Data:
-Array of file data compressed with DEFLATE.
+Array of entry data.
+  Entry data:
+    File data for entry compressed with DEFLATE.
 
 Table:
 Array of entries compressed with DEFLATE.
-
   Entry:
     compressed size    8 bytes
     uncompressed size  8 bytes
